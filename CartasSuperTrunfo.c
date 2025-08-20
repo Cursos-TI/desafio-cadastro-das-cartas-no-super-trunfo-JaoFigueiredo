@@ -10,12 +10,15 @@ int main(){                                  //todas inicializadas para evitar o
     char estado1='A',estado2='A';           // Declaração das variáveis para o campo Estado
     int codigo1=0,codigo2=0;                  //Declaração das variáveis para o campo código da carta
     char cidade1[20]="",cidade2[20]="";      //Declaração das variáveis para o campo Nome da cidade
-    int populacao1=0,populacao2=0;           //Declaração das variáveis para o campo  população
+    unsigned long int populacao1=0,populacao2=0;           //Declaração das variáveis para o campo  população
     int pontos1=0,pontos2=0;                 //Declaração das variáveis para o campo pontos turisticos
     float area1=0.0,area2=0.0;               //Declaração das variáveis para o campo area
     float pib1=0.0,pib2=0.0;                 //Declaração das variáveis para o campo pib 
     float pibpercapt1=0.0,pibpercapt2=0.0;    //Declaração das variáveis para o campo pib per capta
     float densidade1=0.0, densidade2=0.0;    //Declaração das variáveis para o campo densidade populacional
+    float superpoder1=0.0,superpoder2=0.0;
+    float inverso1=0.0,inverso2=0.0;
+    int comp1=0, comp2=0, comp3=0, comp4=0, comp5=0, comp6=0, comp7=0;
 
     printf("Bem vindo ao cadastro de cartas do Desafio Super Trunfo!\n\n Por favor digite uma letra entre A e H \n");//Mensagem p/o usuário
     scanf("%c",&estado1);  //comando para entrada de dados                                                                                            
@@ -27,7 +30,7 @@ int main(){                                  //todas inicializadas para evitar o
     scanf(" %[^\n]",cidade1); //comando para entrada de dados sem o &
 
     printf("Agora digite a população desta cidade\n");                                                              //Mensagem p/o usuário
-    scanf("%i",&populacao1);//comando para entrada de dados
+    scanf("%lu",&populacao1);//comando para entrada de dados
 
     printf("Agora digite o PIB desta cidade\n");                                                                    //Mensagem p/o usuário
     scanf("%f",&pib1);//comando para entrada de dados
@@ -50,7 +53,7 @@ int main(){                                  //todas inicializadas para evitar o
     scanf(" %[^\n]",cidade2);//comando para entrada de dados
 
     printf("Agora digite a população desta cidade\n");                                                              //Mensagem p/o usuário
-    scanf("%i",&populacao2);//comando para entrada de dados
+    scanf("%lu",&populacao2);//comando para entrada de dados
 
     printf("Agora digite o PIB desta cidade\n");                                                                    //Mensagem p/o usuário
     scanf("%f",&pib2);//comando para entrada de dados
@@ -66,14 +69,21 @@ int main(){                                  //todas inicializadas para evitar o
 
     densidade1= (float) populacao1 / area1;
     densidade2= (float) populacao2 / area2;
+
+    inverso1 = 1.0/densidade1;
+    inverso2 = 1.0/densidade2;
+
+    superpoder1= (unsigned long) populacao1 + pontos1 + area1 + pib1 + pibpercapt1 + inverso1;
+    superpoder2= (unsigned long) populacao2 + pontos2 + area2 + pib2 + pibpercapt2 + inverso2;
     
     printf("Carta 1 \n");       //Sequencia de prints para imprimir o resultado final da carta 1
     printf("%s",cidade1);
     printf("  ");
     printf("%c",estado1);
     printf("%i\n",codigo1);
-    printf("População: %i habitantes\n",populacao1);
+    printf("População: %lu habitantes\n",populacao1);
     printf("PIB: %.2f Reais\n",pib1);
+    printf("Área: %.2f Km²\n",area1);
     printf("Pontos turísticos: %i \n",pontos1);
     printf("Densidade Populacional: %.2f Hab/Km²\n",densidade1);
     printf("PIB per capta: %.2f Reais\n\n",pibpercapt1);
@@ -83,11 +93,28 @@ int main(){                                  //todas inicializadas para evitar o
     printf("  ");
     printf("%c",estado2);
     printf("%i\n",codigo2);
-    printf("População: %i habitantes\n",populacao2);
+    printf("População: %lu habitantes\n",populacao2);
     printf("PIB: %.2f Reais\n",pib2);
+    printf("Área: %.2f Km²\n",area2);
     printf("Pontos turísticos: %i \n",pontos2);
     printf("Densidade Populacional: %.2f Hab/Km²\n",densidade2);
     printf("PIB per capta: %.2f Reais\n\n",pibpercapt2);
+
+    comp1 = populacao1 > populacao2;
+    comp2 = pontos1 > pontos2;
+    comp3 = area1 > area2;
+    comp4 = pib1 > pib2;
+    comp5 = pibpercapt1 > pibpercapt2;
+    comp6 = densidade1 < densidade2;
+    comp7 = superpoder1 > superpoder2;
+    
+    printf("Vencedor é: %i\n",comp1);
+    printf("Vencedor é: %i\n",comp2);
+    printf("Vencedor é: %i\n",comp3);                                                 
+    printf("Vencedor é: %i\n",comp4);
+    printf("Vencedor é: %i\n",comp5);
+    printf("Vencedor é: %i\n",comp6);
+    printf("Vencedor é: %i\n\n",comp7);
 
 
 return 0;
